@@ -54,7 +54,7 @@ laws_clean <- laws_raw |>
     state = str_to_upper(state),
     year = as.numeric(adoption_year)
   ) |>
-  filter(!is.na(state), !is.na(year)) |> #removes rows with missing state/year
+  filter(!is.na(state)) |> #removes rows with no state identifier
   distinct()
 
 
