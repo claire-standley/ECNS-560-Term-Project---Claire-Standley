@@ -1,4 +1,4 @@
-
+#SET UP-------------------------------------------------------------------------
 # Install necessary packages
 #install.packages(c("tidyverse", "readxl", "janitor", "fixest", ))
 
@@ -9,7 +9,7 @@ library(janitor)
 library(fixest)
 
 
-
+#LOADING THE DATA----------------------------------------------------------------
 #Load the data from git hub folder
 
 #farmers market food directory data (county-level)
@@ -25,7 +25,8 @@ laws_raw <- read_csv("https://raw.githubusercontent.com/claire-standley/ECNS-560
   clean_names()
 
 
- 
+#DATA CLEANING-------------------------------------------------------------------
+
 #First converting variable formats, tidying, and removing duplicates
 
 #cleaning the farmers market data
@@ -129,7 +130,7 @@ laws_panel <- laws_clean |>
 
 
 
-#Merging the datasets
+#MERGING THE DATA--------------------------------------------------------------
 
 #Dataset 1 - Farmers markets
 farmers_analysis <- farmers_county |>
@@ -149,7 +150,7 @@ census_analysis <- census_clean |>
   filter(!is.na(state), state != "")
 
 
-#Save our cleaned datasets
+#SAVING THE DATA---------------------------------------------------------------------
 save(farmers_analysis, file = "farmers_law_data.RData")
 
 save(census_analysis, file = "census_law_data.RData")
